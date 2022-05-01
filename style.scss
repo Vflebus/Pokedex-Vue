@@ -1,0 +1,121 @@
+$normal: #A8A77A;
+$fire: #EE8130;
+$water: #6390F0;
+$electric: #F7D02C;
+$grass: #7AC74C;
+$ice: #96D9D6;
+$fighting: #C22E28;
+$poison: #A33EA1;
+$ground: #E2BF65;
+$flying: #A98FF3;
+$psychic: #F95587;
+$bug: #A6B91A;
+$rock: #B6A136;
+$ghost: #735797;
+$dragon: #6F35FC;
+$dark: #705746;
+$steel: #B7B7CE;
+$fairy: #D685AD;
+
+body {
+    width: 100vw;
+    height: 100vh;
+    #app {
+        width: 100%;
+        min-height: 100%;
+        background-color: lightgrey;
+        display: flex;
+        column-gap: 5vw;
+        row-gap: 5vh;
+        flex-wrap: wrap;
+        padding: 5vh 5vw;
+        .pokeCard{
+            width: 25vw;
+            height: 30vh;
+            border-radius: 20px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            .pokeImg {
+                width: 50%;
+            }
+            .pokeInfos{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 2rem;
+                .pokeName{
+                    font-size: 2rem;
+                    text-transform: capitalize;
+                }
+                .pokeTypes{
+                    display: flex;
+                    column-gap: 2rem;
+                    .pokeType{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 1.5rem;
+                        padding: .5rem;
+                        border-radius: .5rem;
+                        border: 1px solid black;
+                        &.grass{
+                            background-color: $grass;
+                        }
+                        &.poison{
+                            background-color: $poison;
+                        }
+                        &.fire{
+                            background-color: $fire;
+                        }
+                        &.water{
+                            background-color: $water;
+                        }
+                        &.electric{
+                            background-color: $electric;
+                        }
+                        &.normal{
+                            background-color: $normal;
+                        }
+                        &.ice{
+                            background-color: $ice;
+                        }
+                        &.fighting{
+                            background-color: $fighting;
+                        }
+                        &.ground{
+                            background-color: $ground;
+                        }
+                        &.flying{
+                            background-color: $flying;
+                        }
+                        &.psychic{
+                            background-color: $psychic;
+                        }
+                        &.bug{
+                            background-color: $bug;
+                        }
+                        &.rock{
+                            background-color: $rock;
+                        }
+                        &.ghost{
+                            background-color: $ghost;
+                        }
+                        &.dragon{
+                            background-color: $dragon;
+                        }
+                        &.dark{
+                            background-color: $dark;
+                        }
+                        &.steel{
+                            background-color: $steel;
+                        }
+                        &.fairy{
+                            background-color: $fairy;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

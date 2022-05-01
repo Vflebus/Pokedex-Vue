@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pokedex !</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app">
+        <img src="./assets/loading_gif.gif" alt="pokeball gif" v-if="loading" @click="changeLoading" />
+
+
+        <div v-if=" pokedex!= '' " v-for="pokemon in pokedex" class="pokeCard" :style="{'background': pokemon.cardType}" :key="pokemon.id">
+            <img v-bind:src="pokemon.sprite" :alt="pokemon.name" class="pokeImg" />
+            <div class="pokeInfos">
+                <p class="pokeName">{{ pokemon.name }}</p>
+                <div class="pokeTypes">
+                    <p v-for="type in pokemon.type" class="pokeType" :class="type.type.name">
+                        {{ type.type.name }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const vue = Vue.createApp({
+            data() {
+                return {
+                    loading: true,
+                    pokedex: "",
+                };
+            },
+            methods: {
+                changeLoading() {
+                    this.loading = !this.loading;
+                    console.log(this.loading);
+                },
+                typeToColor(type) {
+                    switch (type) {
+                        case 'normal':
+                            return "#A8A77A"
+                            break;
+                        case 'fire':
+                            return "#EE8130"
+                            break;
+                        case 'water':
+                            return "#6390F0"
+                            break;
+                        case 'electric':
+                            return "#F7D02C"
+                            break;
+                        case 'grass':
+                            return "#7AC74C"
+                            break;
+                        case 'poison':
+                            return "#A33EA1"
+                            break;
+                        case 'ice':
+                            return "#96D9D6"
+                            break;
+                        case 'fighting':
+                            return "#C22E28"
+                            break;
+                        case 'ground':
+                            return "#E2BF65"
+                            break;
+                        case "flying":
+                            return "#A98FF3"
+                            break;
+                        case "psychic":
+                            return "#F95587"
+                            break;
+                        case "bug":
+                            return "#A6B91A"
+                            break;
+                        case "rock":
+                            return "#B6A136"
+                            break;
+                        case "ghost":
+                            return "#735797"
+                            break;
+                        case "dragon":
+                            return "#6F35FC"
+                            break;
+                        case "dark":
+                            return "#705746"
+                            break;
+                        case "steel":
+                            return "#B7B7CE"
+                            break;
+                        case "fairy":
+                            return "#D685AD"
+                            break;
+
+                    }
+                }
+            },
+            async mounted() {
+                let allPokemons = await fetch(
+                    "https://pokeapi.co/api/v2/pokemon?limit=151"
+                );
+                allPokemons = await allPokemons.json();
+                this.pokedex = await Promise.all(
+                    allPokemons.results.map(async (pokemon) => {
+                        let data = await fetch(pokemon.url);
+                        data = await data.json();
+                        return {
+                            id: data.id,
+                            name: data.name,
+                            sprite: data.sprites.front_default,
+                            type: data.types,
+                            cardType:
+                                data.types.length == 2
+                                    ? 'linear-gradient(to right bottom, ' + this.typeToColor(data.types[0].type.name) + ", " + this.typeToColor(data.types[1].type.name) + ')'
+                                    : this.typeToColor(data.types[0].type.name),
+                        };
+                    })
+                );
+                this.loading = false;
+                console.log(this.pokedex);
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

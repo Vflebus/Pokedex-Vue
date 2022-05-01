@@ -1,0 +1,104 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+body #app {
+  width: 100%;
+  min-height: 100%;
+  background-color: lightgrey;
+  display: flex;
+  column-gap: 5vw;
+  row-gap: 5vh;
+  flex-wrap: wrap;
+  padding: 5vh 5vw;
+}
+body #app .pokeCard {
+  width: 25vw;
+  height: 30vh;
+  border-radius: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+body #app .pokeCard .pokeImg {
+  width: 50%;
+}
+body #app .pokeCard .pokeInfos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+}
+body #app .pokeCard .pokeInfos .pokeName {
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+body #app .pokeCard .pokeInfos .pokeTypes {
+  display: flex;
+  column-gap: 2rem;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.grass {
+  background-color: #7AC74C;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.poison {
+  background-color: #A33EA1;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.fire {
+  background-color: #EE8130;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.water {
+  background-color: #6390F0;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.electric {
+  background-color: #F7D02C;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.normal {
+  background-color: #A8A77A;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.ice {
+  background-color: #96D9D6;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.fighting {
+  background-color: #C22E28;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.ground {
+  background-color: #E2BF65;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.flying {
+  background-color: #A98FF3;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.psychic {
+  background-color: #F95587;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.bug {
+  background-color: #A6B91A;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.rock {
+  background-color: #B6A136;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.ghost {
+  background-color: #735797;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.dragon {
+  background-color: #6F35FC;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.dark {
+  background-color: #705746;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.steel {
+  background-color: #B7B7CE;
+}
+body #app .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
+  background-color: #D685AD;
+}
+
+/*# sourceMappingURL=style.css.map */
