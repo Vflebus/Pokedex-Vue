@@ -217,7 +217,7 @@
             },
             async mounted() {
                 let allPokemons = await fetch(
-                    "https://pokeapi.co/api/v2/pokemon?limit=151"
+                    "https://pokeapi.co/api/v2/pokemon?limit=100000000"
                 );
                 allPokemons = await allPokemons.json();
                 this.pokedex = await Promise.all(
