@@ -14,17 +14,72 @@
     <script src="https://unpkg.com/vue@3"></script>
 
     <div id="app">
-        <img src="./assets/loading_gif.gif" alt="pokeball gif" v-if="loading" @click="changeLoading" />
-
-
-        <div v-if=" pokedex!= '' " v-for="pokemon in pokedex" class="pokeCard" :style="{'background': pokemon.cardType}" :key="pokemon.id">
-            <img v-bind:src="pokemon.sprite" :alt="pokemon.name" class="pokeImg" />
-            <div class="pokeInfos">
-                <p class="pokeName">{{ pokemon.name }}</p>
-                <div class="pokeTypes">
-                    <p v-for="type in pokemon.type" class="pokeType" :class="type.type.name">
-                        {{ type.type.name }}
-                    </p>
+        <form action="#" class="searchBar">
+            <input type="text" v-model="search" @input="filterDex" placeholder="Search for a pokemon"
+                class="searchInput" />
+            <div class="typeSelectors">
+                <div>
+                    <select class="searchType" v-model="type1" @change="filterDex">
+                        <option value="" default>Select a type</option>
+                        <option value="normal">normal</option>
+                        <option value="fire">fire</option>
+                        <option value="water">water</option>
+                        <option value="electric">electric</option>
+                        <option value="grass">grass</option>
+                        <option value="poison">poison</option>
+                        <option value="ice">ice</option>
+                        <option value="fighting">fighting</option>
+                        <option value="ground">ground</option>
+                        <option value="flying">flying</option>
+                        <option value="psychic">psychic</option>
+                        <option value="bug">bug</option>
+                        <option value="rock">rock</option>
+                        <option value="ghost">ghost</option>
+                        <option value="dragon">dragon</option>
+                        <option value="dark">dark</option>
+                        <option value="steel">steel</option>
+                        <option value="fairy">fairy</option>
+                    </select>
+                    <button @click="resetType1">&#10007;</button>
+                </div>
+                <div>
+                    <select class="searchType" v-model="type2" @change="filterDex">
+                        <option value="">Select a type</option>
+                        <option value="normal">normal</option>
+                        <option value="fire">fire</option>
+                        <option value="water">water</option>
+                        <option value="electric">electric</option>
+                        <option value="grass">grass</option>
+                        <option value="poison">poison</option>
+                        <option value="ice">ice</option>
+                        <option value="fighting">fighting</option>
+                        <option value="ground">ground</option>
+                        <option value="flying">flying</option>
+                        <option value="psychic">psychic</option>
+                        <option value="bug">bug</option>
+                        <option value="rock">rock</option>
+                        <option value="ghost">ghost</option>
+                        <option value="dragon">dragon</option>
+                        <option value="dark">dark</option>
+                        <option value="steel">steel</option>
+                        <option value="fairy">fairy</option>
+                    </select>
+                    <button @click="resetType2">&#10007;</button>
+                </div>
+            </div>
+        </form>
+        <div class="cardsContainer">
+            <img src="./assets/loading_gif.gif" alt="pokeball gif" v-if="loading" class="loadingBall" />
+            <div v-for="pokemon in currentDex" v-if=" currentDex!= '' " class="pokeCard"
+                :style="{'background': pokemon.cardType}" :key="pokemon.id">
+                <img v-bind:src="pokemon.sprite" :alt="pokemon.name" class="pokeImg" />
+                <div class="pokeInfos">
+                    <p class="pokeName">{{ pokemon.name }}</p>
+                    <div class="pokeTypes">
+                        <p v-for="type in pokemon.type" class="pokeType" :class="type.type.name">
+                            {{ type.type.name }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,71 +91,128 @@
                 return {
                     loading: true,
                     pokedex: "",
+                    currentDex: "",
+                    search: "",
+                    type1: "",
+                    type2: "",
                 };
             },
             methods: {
-                changeLoading() {
-                    this.loading = !this.loading;
-                    console.log(this.loading);
-                },
                 typeToColor(type) {
                     switch (type) {
-                        case 'normal':
-                            return "#A8A77A"
+                        case "normal":
+                            return "#A8A77A";
                             break;
-                        case 'fire':
-                            return "#EE8130"
+                        case "fire":
+                            return "#EE8130";
                             break;
-                        case 'water':
-                            return "#6390F0"
+                        case "water":
+                            return "#6390F0";
                             break;
-                        case 'electric':
-                            return "#F7D02C"
+                        case "electric":
+                            return "#F7D02C";
                             break;
-                        case 'grass':
-                            return "#7AC74C"
+                        case "grass":
+                            return "#7AC74C";
                             break;
-                        case 'poison':
-                            return "#A33EA1"
+                        case "poison":
+                            return "#A33EA1";
                             break;
-                        case 'ice':
-                            return "#96D9D6"
+                        case "ice":
+                            return "#96D9D6";
                             break;
-                        case 'fighting':
-                            return "#C22E28"
+                        case "fighting":
+                            return "#C22E28";
                             break;
-                        case 'ground':
-                            return "#E2BF65"
+                        case "ground":
+                            return "#E2BF65";
                             break;
                         case "flying":
-                            return "#A98FF3"
+                            return "#A98FF3";
                             break;
                         case "psychic":
-                            return "#F95587"
+                            return "#F95587";
                             break;
                         case "bug":
-                            return "#A6B91A"
+                            return "#A6B91A";
                             break;
                         case "rock":
-                            return "#B6A136"
+                            return "#B6A136";
                             break;
                         case "ghost":
-                            return "#735797"
+                            return "#735797";
                             break;
                         case "dragon":
-                            return "#6F35FC"
+                            return "#6F35FC";
                             break;
                         case "dark":
-                            return "#705746"
+                            return "#705746";
                             break;
                         case "steel":
-                            return "#B7B7CE"
+                            return "#B7B7CE";
                             break;
                         case "fairy":
-                            return "#D685AD"
+                            return "#D685AD";
                             break;
-
                     }
+                },
+                filterTypes(types, searchedType){
+                    verificator = false
+                    types.forEach(type => {
+                        if (type.type.name == searchedType){
+                            verificator = true;
+                        }
+                    })
+                    return verificator;
+                },
+                filterDex() {
+                    if (this.search == "" && this.type1 == "" && this.type2 =="") {
+                        this.currentDex = this.pokedex;
+                    } else if (this.search !== "" && this.type1 == ""  && this.type2 == "") {
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                            pokemon.name.toLowerCase().includes(this.search.toLowerCase())
+                        );
+                    } else if (this.search !== "" && this.type1 !== "" && this.type2 == "") {
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                            pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type1)
+                        );
+                    } else if (this.search !== "" && this.type1 !== "" && this.type2 == this.type1){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                            pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type1) && pokemon.type.length < 2
+                        );
+                    } else if (this.search !== "" && this.type1 !== "" && this.type2 !== ""){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                            pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type1) && this.filterTypes(pokemon.type, this.type2)
+                        );
+                    } else if (this.search !== "" && this.type1 == "" && this.type2 !== ""){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                            pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type2)
+                        );
+                    } else if (this.search == "" && this.type1 !== "" && this.type2 == ""){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                            this.filterTypes(pokemon.type, this.type1)
+                        );
+                    } else if (this.search == "" && this.type1 !== "" && this.type2 == this.type1){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                        this.filterTypes(pokemon.type, this.type1) && pokemon.type.length < 2
+                        );
+                    } else if (this.search == "" && this.type1 !== "" && this.type2 !== ""){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                        this.filterTypes(pokemon.type, this.type1) && this.filterTypes(pokemon.type, this.type2)
+                        );
+                    } else if (this.search == "" && this.type1 == "" && this.type2 !== ""){
+                        this.currentDex = this.pokedex.filter((pokemon) =>
+                        this.filterTypes(pokemon.type, this.type2)
+                        );
+                    }
+                },
+                resetType1() {
+                    this.type1 = "";
+                    this.filterDex();
+                },
+                resetType2() {
+                    this.type2 = "";
+                    this.filterDex();
                 }
             },
             async mounted() {
@@ -119,11 +231,16 @@
                             type: data.types,
                             cardType:
                                 data.types.length == 2
-                                    ? 'linear-gradient(to right bottom, ' + this.typeToColor(data.types[0].type.name) + ", " + this.typeToColor(data.types[1].type.name) + ')'
+                                    ? "linear-gradient(to right bottom, " +
+                                    this.typeToColor(data.types[0].type.name) +
+                                    ", " +
+                                    this.typeToColor(data.types[1].type.name) +
+                                    ")"
                                     : this.typeToColor(data.types[0].type.name),
                         };
                     })
                 );
+                this.currentDex = this.pokedex;
                 this.loading = false;
                 console.log(this.pokedex);
             },

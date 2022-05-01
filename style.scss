@@ -20,98 +20,145 @@ $fairy: #D685AD;
 body {
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
     #app {
         width: 100%;
         min-height: 100%;
-        background-color: lightgrey;
+        background-color: #fff;
         display: flex;
-        column-gap: 5vw;
-        row-gap: 5vh;
-        flex-wrap: wrap;
-        padding: 5vh 5vw;
-        .pokeCard{
-            width: 25vw;
-            height: 30vh;
-            border-radius: 20px;
+        justify-content: center;
+        .searchBar{
+            width: 20%;
+            height: 100vh;
+            background-color: #226ef2;
+            border-radius: 0 1vh 1vh 0;
             display: flex;
-            justify-content: start;
+            flex-direction: column;
             align-items: center;
-            .pokeImg {
-                width: 50%;
+            padding-top: 20vh;
+            row-gap: 2.5vh;
+            .searchInput{
+                height: 5vh;
+                font-size: 2vh;
+                text-align: center;
             }
-            .pokeInfos{
+            .typeSelectors{
+                display: flex;
+                justify-content: center;
+                column-gap: 1.5rem;
+                width: 100%;
+                flex-wrap: wrap;
+                .searchType{
+                    height: 2.5vh;
+                }
+                button{
+                    background-color: transparent;
+                    border: none;
+                    color: #fff;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+            }
+        }
+        .cardsContainer{
+            .loadingBall{
+                width: 100%;
+            }
+            width: 80%;
+            height: 100vh;
+            overflow-y: scroll;
+            display: flex;
+            justify-content: center;
+            column-gap: 5vw;
+            row-gap: 5vh;
+            flex-wrap: wrap;
+            padding: 5vh 5vw;
+            .pokeCard{
+                width: 23%;
+                height: 30vh;
+                border-radius: 20px;
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 align-items: center;
-                row-gap: 2rem;
-                .pokeName{
-                    font-size: 2rem;
-                    text-transform: capitalize;
+                .pokeImg {
+                    height: 50%;
                 }
-                .pokeTypes{
+                .pokeInfos{
                     display: flex;
-                    column-gap: 2rem;
-                    .pokeType{
+                    flex-direction: column;
+                    align-items: center;
+                    row-gap: 2vh;
+                    height: 25%;
+                    .pokeName{
+                        font-size: 2rem;
+                        text-transform: capitalize;
+                    }
+                    .pokeTypes{
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: 1.5rem;
-                        padding: .5rem;
-                        border-radius: .5rem;
-                        border: 1px solid black;
-                        &.grass{
-                            background-color: $grass;
-                        }
-                        &.poison{
-                            background-color: $poison;
-                        }
-                        &.fire{
-                            background-color: $fire;
-                        }
-                        &.water{
-                            background-color: $water;
-                        }
-                        &.electric{
-                            background-color: $electric;
-                        }
-                        &.normal{
-                            background-color: $normal;
-                        }
-                        &.ice{
-                            background-color: $ice;
-                        }
-                        &.fighting{
-                            background-color: $fighting;
-                        }
-                        &.ground{
-                            background-color: $ground;
-                        }
-                        &.flying{
-                            background-color: $flying;
-                        }
-                        &.psychic{
-                            background-color: $psychic;
-                        }
-                        &.bug{
-                            background-color: $bug;
-                        }
-                        &.rock{
-                            background-color: $rock;
-                        }
-                        &.ghost{
-                            background-color: $ghost;
-                        }
-                        &.dragon{
-                            background-color: $dragon;
-                        }
-                        &.dark{
-                            background-color: $dark;
-                        }
-                        &.steel{
-                            background-color: $steel;
-                        }
-                        &.fairy{
-                            background-color: $fairy;
+                        column-gap: 2rem;
+                        .pokeType{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 1.5rem;
+                            padding: .5rem;
+                            border-radius: .5rem;
+                            border: 1px solid black;
+                            &.grass{
+                                background-color: $grass;
+                            }
+                            &.poison{
+                                background-color: $poison;
+                            }
+                            &.fire{
+                                background-color: $fire;
+                            }
+                            &.water{
+                                background-color: $water;
+                            }
+                            &.electric{
+                                background-color: $electric;
+                            }
+                            &.normal{
+                                background-color: $normal;
+                            }
+                            &.ice{
+                                background-color: $ice;
+                            }
+                            &.fighting{
+                                background-color: $fighting;
+                            }
+                            &.ground{
+                                background-color: $ground;
+                            }
+                            &.flying{
+                                background-color: $flying;
+                            }
+                            &.psychic{
+                                background-color: $psychic;
+                            }
+                            &.bug{
+                                background-color: $bug;
+                            }
+                            &.rock{
+                                background-color: $rock;
+                            }
+                            &.ghost{
+                                background-color: $ghost;
+                            }
+                            &.dragon{
+                                background-color: $dragon;
+                            }
+                            &.dark{
+                                background-color: $dark;
+                            }
+                            &.steel{
+                                background-color: $steel;
+                            }
+                            &.fairy{
+                                background-color: $fairy;
+                            }
                         }
                     }
                 }

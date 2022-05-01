@@ -1,43 +1,90 @@
 body {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 body #app {
   width: 100%;
   min-height: 100%;
-  background-color: lightgrey;
+  background-color: #fff;
   display: flex;
+  justify-content: center;
+}
+body #app .searchBar {
+  width: 20%;
+  height: 100vh;
+  background-color: #226ef2;
+  border-radius: 0 1vh 1vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20vh;
+  row-gap: 2.5vh;
+}
+body #app .searchBar .searchInput {
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+body #app .searchBar .typeSelectors {
+  display: flex;
+  justify-content: center;
+  column-gap: 1.5rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+body #app .searchBar .typeSelectors .searchType {
+  height: 2.5vh;
+}
+body #app .searchBar .typeSelectors button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+body #app .cardsContainer {
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
   column-gap: 5vw;
   row-gap: 5vh;
   flex-wrap: wrap;
   padding: 5vh 5vw;
 }
-body #app .pokeCard {
-  width: 25vw;
+body #app .cardsContainer .loadingBall {
+  width: 100%;
+}
+body #app .cardsContainer .pokeCard {
+  width: 23%;
   height: 30vh;
   border-radius: 20px;
   display: flex;
-  justify-content: start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-body #app .pokeCard .pokeImg {
-  width: 50%;
+body #app .cardsContainer .pokeCard .pokeImg {
+  height: 50%;
 }
-body #app .pokeCard .pokeInfos {
+body #app .cardsContainer .pokeCard .pokeInfos {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 2rem;
+  row-gap: 2vh;
+  height: 25%;
 }
-body #app .pokeCard .pokeInfos .pokeName {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeName {
   font-size: 2rem;
   text-transform: capitalize;
 }
-body #app .pokeCard .pokeInfos .pokeTypes {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes {
   display: flex;
   column-gap: 2rem;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,58 +93,58 @@ body #app .pokeCard .pokeInfos .pokeTypes .pokeType {
   border-radius: 0.5rem;
   border: 1px solid black;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.grass {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.grass {
   background-color: #7AC74C;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.poison {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.poison {
   background-color: #A33EA1;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.fire {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fire {
   background-color: #EE8130;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.water {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.water {
   background-color: #6390F0;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.electric {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.electric {
   background-color: #F7D02C;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.normal {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.normal {
   background-color: #A8A77A;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.ice {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.ice {
   background-color: #96D9D6;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.fighting {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fighting {
   background-color: #C22E28;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.ground {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.ground {
   background-color: #E2BF65;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.flying {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.flying {
   background-color: #A98FF3;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.psychic {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.psychic {
   background-color: #F95587;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.bug {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.bug {
   background-color: #A6B91A;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.rock {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.rock {
   background-color: #B6A136;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.ghost {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.ghost {
   background-color: #735797;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.dragon {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.dragon {
   background-color: #6F35FC;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.dark {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.dark {
   background-color: #705746;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.steel {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.steel {
   background-color: #B7B7CE;
 }
-body #app .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
+body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
   background-color: #D685AD;
 }
 
