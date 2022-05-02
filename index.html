@@ -13,6 +13,12 @@
 <body>
     <script src="https://unpkg.com/vue@3"></script>
 
+    <div class="responsiveWarning">
+        <h1>Oh no !</h1>
+        <img src="/assets/pokeball_lazy.png" alt="">
+        <p>This website is not yet adapted to your screen resolution... Don't worry, it will soon be !</p>
+    </div>
+
     <div id="app">
         <form action="#" class="searchBar">
             <input type="text" v-model="search" @input="filterDex" placeholder="Search for a pokemon"

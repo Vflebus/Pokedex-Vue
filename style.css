@@ -3,6 +3,9 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
+body .responsiveWarning {
+  display: none;
+}
 body #app {
   width: 100%;
   min-height: 100%;
@@ -25,6 +28,7 @@ body #app .searchBar .searchInput {
   height: 5vh;
   font-size: 2vh;
   text-align: center;
+  max-width: 80%;
 }
 body #app .searchBar .typeSelectors {
   display: flex;
@@ -35,6 +39,7 @@ body #app .searchBar .typeSelectors {
 }
 body #app .searchBar .typeSelectors .searchType {
   height: 2.5vh;
+  max-width: 50%;
 }
 body #app .searchBar .typeSelectors button {
   background-color: transparent;
@@ -146,6 +151,27 @@ body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.steel {
 }
 body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
   background-color: #D685AD;
+}
+@media screen and (max-width: 1020px) {
+  body .responsiveWarning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10vh;
+    min-height: 100%;
+    width: 100%;
+    padding: 5vh 5vw;
+  }
+  body .responsiveWarning img {
+    max-width: 70%;
+  }
+  body .responsiveWarning p {
+    text-align: center;
+  }
+  body #app {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
