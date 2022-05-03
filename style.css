@@ -16,6 +16,7 @@ body #app {
 body #app .searchBar {
   width: 20%;
   height: 100vh;
+  min-height: 110px;
   background-color: #226ef2;
   border-radius: 0 1vh 1vh 0;
   display: flex;
@@ -39,6 +40,7 @@ body #app .searchBar .typeSelectors {
 }
 body #app .searchBar .typeSelectors .searchType {
   height: 2.5vh;
+  font-size: 1vh;
   text-overflow: ellipsis;
 }
 body #app .searchBar .typeSelectors button {
@@ -55,6 +57,7 @@ body #app .cardsContainer {
   overflow-y: scroll;
   display: flex;
   justify-content: center;
+  align-items: center;
   column-gap: 5vw;
   row-gap: 5vh;
   flex-wrap: wrap;
@@ -65,7 +68,7 @@ body #app .cardsContainer .loadingBall {
 }
 body #app .cardsContainer .pokeCard {
   width: 23%;
-  height: 30vh;
+  aspect-ratio: 1/1;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -160,20 +163,26 @@ body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
   body #app .searchBar {
     width: 100%;
     height: 20vh;
-    padding-top: 2vh;
+    padding-top: 5%;
     border-radius: 0 0 1vh 1vh;
+  }
+  body #app .searchBar .searchInput {
+    height: 30%;
   }
   body #app .searchBar .typeSelectors {
     width: 80%;
+    height: 30%;
     justify-content: space-around;
     align-items: center;
     column-gap: 2vw;
   }
   body #app .searchBar .typeSelectors div {
+    height: 100%;
     width: 40%;
   }
   body #app .searchBar .typeSelectors div .searchType {
     width: 75%;
+    height: 70%;
   }
   body #app .searchBar .typeSelectors div .searchType button {
     width: 20%;
@@ -186,8 +195,9 @@ body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
   }
   body #app .cardsContainer .pokeCard {
     aspect-ratio: 1/1;
-    height: unset;
+    height: auto;
     width: 30%;
+    flex-grow: 1;
   }
   body #app .cardsContainer .pokeCard .pokeImg {
     height: 50%;
@@ -199,7 +209,11 @@ body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType.fairy {
     font-size: 1em;
   }
   body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes {
-    display: none;
+    column-gap: 0.5em;
+  }
+  body #app .cardsContainer .pokeCard .pokeInfos .pokeTypes .pokeType {
+    font-size: 0.5em;
+    height: 1em;
   }
 }
 
