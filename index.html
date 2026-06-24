@@ -15,8 +15,7 @@
 
     <div id="app">
         <form action="#" class="searchBar">
-            <input type="search" v-model="search" @input="filterDex" placeholder="Search for a pokemon"
-                class="searchInput" />
+            <input type="search" v-model="search" @input="filterDex" placeholder="Search for a pokemon" class="searchInput" />
             <div class="typeSelectors">
                 <div>
                     <select class="searchType" v-model="type1" @change="filterDex">
@@ -70,8 +69,7 @@
         </form>
         <div class="cardsContainer">
             <img src="./assets/loading_gif.gif" alt="pokeball gif" v-if="loading" class="loadingBall" />
-            <div v-for="pokemon in currentDex" v-if=" currentDex!= '' " class="pokeCard"
-                :style="{'background': pokemon.cardType}" :key="pokemon.id">
+            <div v-for="pokemon in currentDex" v-if=" currentDex!= '' " class="pokeCard" :style="{'background': pokemon.cardType}" :key="pokemon.id">
                 <img v-bind:src="pokemon.sprite" :alt="pokemon.name" class="pokeImg" />
                 <div class="pokeInfos">
                     <p class="pokeName">{{ pokemon.name }}</p>
@@ -156,19 +154,19 @@
                             break;
                     }
                 },
-                filterTypes(types, searchedType){
+                filterTypes(types, searchedType) {
                     verificator = false
                     types.forEach(type => {
-                        if (type.type.name == searchedType){
+                        if (type.type.name == searchedType) {
                             verificator = true;
                         }
                     })
                     return verificator;
                 },
                 filterDex() {
-                    if (this.search == "" && this.type1 == "" && this.type2 =="") {
+                    if (this.search == "" && this.type1 == "" && this.type2 == "") {
                         this.currentDex = this.pokedex;
-                    } else if (this.search !== "" && this.type1 == ""  && this.type2 == "") {
+                    } else if (this.search !== "" && this.type1 == "" && this.type2 == "") {
                         this.currentDex = this.pokedex.filter((pokemon) =>
                             pokemon.name.toLowerCase().includes(this.search.toLowerCase())
                         );
@@ -176,33 +174,33 @@
                         this.currentDex = this.pokedex.filter((pokemon) =>
                             pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type1)
                         );
-                    } else if (this.search !== "" && this.type1 !== "" && this.type2 == this.type1){
+                    } else if (this.search !== "" && this.type1 !== "" && this.type2 == this.type1) {
                         this.currentDex = this.pokedex.filter((pokemon) =>
                             pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type1) && pokemon.type.length < 2
                         );
-                    } else if (this.search !== "" && this.type1 !== "" && this.type2 !== ""){
+                    } else if (this.search !== "" && this.type1 !== "" && this.type2 !== "") {
                         this.currentDex = this.pokedex.filter((pokemon) =>
                             pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type1) && this.filterTypes(pokemon.type, this.type2)
                         );
-                    } else if (this.search !== "" && this.type1 == "" && this.type2 !== ""){
+                    } else if (this.search !== "" && this.type1 == "" && this.type2 !== "") {
                         this.currentDex = this.pokedex.filter((pokemon) =>
                             pokemon.name.toLowerCase().includes(this.search.toLowerCase()) && this.filterTypes(pokemon.type, this.type2)
                         );
-                    } else if (this.search == "" && this.type1 !== "" && this.type2 == ""){
+                    } else if (this.search == "" && this.type1 !== "" && this.type2 == "") {
                         this.currentDex = this.pokedex.filter((pokemon) =>
                             this.filterTypes(pokemon.type, this.type1)
                         );
-                    } else if (this.search == "" && this.type1 !== "" && this.type2 == this.type1){
+                    } else if (this.search == "" && this.type1 !== "" && this.type2 == this.type1) {
                         this.currentDex = this.pokedex.filter((pokemon) =>
-                        this.filterTypes(pokemon.type, this.type1) && pokemon.type.length < 2
+                            this.filterTypes(pokemon.type, this.type1) && pokemon.type.length < 2
                         );
-                    } else if (this.search == "" && this.type1 !== "" && this.type2 !== ""){
+                    } else if (this.search == "" && this.type1 !== "" && this.type2 !== "") {
                         this.currentDex = this.pokedex.filter((pokemon) =>
-                        this.filterTypes(pokemon.type, this.type1) && this.filterTypes(pokemon.type, this.type2)
+                            this.filterTypes(pokemon.type, this.type1) && this.filterTypes(pokemon.type, this.type2)
                         );
-                    } else if (this.search == "" && this.type1 == "" && this.type2 !== ""){
+                    } else if (this.search == "" && this.type1 == "" && this.type2 !== "") {
                         this.currentDex = this.pokedex.filter((pokemon) =>
-                        this.filterTypes(pokemon.type, this.type2)
+                            this.filterTypes(pokemon.type, this.type2)
                         );
                     }
                 },
@@ -224,6 +222,7 @@
                     allPokemons.results.map(async (pokemon) => {
                         let data = await fetch(pokemon.url);
                         data = await data.json();
+                        console.log(data.types);
                         return {
                             id: data.id,
                             name: data.name,
