@@ -96,7 +96,7 @@
                 };
             },
             methods: {
-                typeToColor(type) {
+                typeColors(type) {
                     switch (type) {
                         case "normal":
                             return "#A8A77A";
@@ -152,6 +152,22 @@
                         case "fairy":
                             return "#D685AD";
                             break;
+                        case "unknown":
+                            return "#9e9e9d";
+                            break;
+                    }
+                },
+                typeToColors(types) {
+                    if (types.length == 0) {
+                        return this.typeColors("unknown");
+                    } else if (types.length == 2) {
+                        return "linear-gradient(to right bottom, " +
+                            this.typeColors(types[0].type.name) +
+                            ", " +
+                            this.typeColors(types[1].type.name) +
+                            ")";
+                    } else {
+                        return this.typeColors(types[0].type.name);
                     }
                 },
                 filterTypes(types, searchedType) {
@@ -222,20 +238,12 @@
                     allPokemons.results.map(async (pokemon) => {
                         let data = await fetch(pokemon.url);
                         data = await data.json();
-                        console.log(data.types);
                         return {
                             id: data.id,
                             name: data.name,
                             sprite: data.sprites.front_default,
                             type: data.types,
-                            cardType:
-                                data.types.length == 2
-                                    ? "linear-gradient(to right bottom, " +
-                                    this.typeToColor(data.types[0].type.name) +
-                                    ", " +
-                                    this.typeToColor(data.types[1].type.name) +
-                                    ")"
-                                    : this.typeToColor(data.types[0].type.name),
+                            cardType: this.typeToColors(data.types),
                         };
                     })
                 );
